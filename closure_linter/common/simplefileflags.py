@@ -155,6 +155,11 @@ def FilterFiles(files):
       if f.endswith('/' + exclude) or f == exclude:
         add_file = False
         break
+      # add support for regex's file name
+      pattern = re.compile(r'^%s$' % ignore)
+      if pattern.search(f):
+        add_file = False
+        break
     for ignore in ignore_dirs_regexs:
       if ignore.search(f):
         # Break out of ignore loop so we don't add to
