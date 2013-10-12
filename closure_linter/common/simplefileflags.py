@@ -156,8 +156,8 @@ def FilterFiles(files):
         add_file = False
         break
       # add support for regex's file name
-      pattern = re.compile(r'^%s$' % ignore)
-      if pattern.search(f):
+      pattern = re.compile(r'^%s$' % exclude)
+      if pattern.match(f):
         add_file = False
         break
     for ignore in ignore_dirs_regexs:
